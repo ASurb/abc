@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>红包</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link type="text/css" rel="stylesheet" href="https://repo.bfw.wiki/bfwrepo/css/animate.3.5.1.css">
+    <style>
+
+        .open-envelopes{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 88;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .envelopes-container{
+            position: absolute;
+            width: 5.2rem;
+            height: 6.5rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            -webkit-transform: translate(-50%,-50%);
+            -moz-transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+            background-image: url(https://repo.bfw.wiki/bfwrepo/icon/5de0a5e2a0a06.png);
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+        }
+        .opened{
+            overflow: hidden;
+        }
+        .opened >h5{
+            display: block;
+            color: #FFE300;
+            font-size: 0.7rem;
+            text-align: center;
+            margin-top: 0.75rem;
+            font-weight: 400;
+        }
+        .opened >h5 small{
+            font-size: 0.3rem;
+            padding-left: 0.05rem;
+        }
+        .open-time{
+            position: absolute;
+            bottom: 0.7rem;
+            width: 100%;
+            text-align: center;
+            font-size: 0.24rem;
+            color: #FF868A;
+        }
+        .open-close{
+            position: absolute;
+            width: 0.31rem;
+            height: 0.31rem;
+            overflow: hidden;
+            right: 0.35rem;
+            top: 0.35rem;
+        }
+        .open-close img{
+            width: 100%;
+        }
+        .no-open{
+            position: absolute;
+            width: 1.74rem;
+            height: 1.75rem;
+            z-index: 88;
+            overflow: hidden;
+            border-radius: 50%;
+            left: 1.7rem;
+            top: 1.75rem;
+        }
+        .no-open img{
+            width: 100%;
+        }
+
+        .head-image{
+            width: 100%;
+            text-align: center;
+        }
+        .head-image span{
+            display: inline-block;
+            width: 1.2rem;
+            height: 1.2rem;
+            overflow: hidden;
+            border-radius: 50%;
+            margin-top: 0.5rem;
+        }
+        .head-image span img{
+            width: 100%;
+        }
+        .head-image >small{
+            display: block;
+            width: 100%;
+            font-size: 0.26rem;
+            padding: 0.2rem 0;
+            color: #FFDDDF;
+        }
+
+        body,h5{
+            margin:0;
+            padding:0;
+            list-style:none;
+            font-family: "微软雅黑";
+            -webkit-appearance: none;
+        }
+        html{
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        body{
+            font-size: 0.24rem;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+        img {
+            border:0px;
+        }
+
+        /**begining**/
+        .whole{
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        .hidden-class{
+            display: none;
+        }
+
+
+    </style>
+    <script type="text/javascript" src="https://repo.bfw.wiki/bfwrepo/js/resize.js"></script>
+</head>
+<body>
+<div class="whole">
+
+
+    <div class="open-envelopes animated bounceIn" id="openEnvelopes">
+        <div class="envelopes-container">
+            <div class="no-open animated" id="noOpenBtn">
+                <img src="https://repo.bfw.wiki/bfwrepo/icon/5de0a66244fd7.png" />
+            </div>
+            <div class="opened animated fadeOut hidden-class" id="openedBtn">
+                <h5>63.29<small>元</small></h5>
+                <div class="head-image">
+							<span>
+								<img src="https://img2.baidu.com/it/u=3980516273,4174897734&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=530&amp;h=298" />
+							</span>
+                    <small>来自 马云</small>
+                </div>
+                <div class="open-time">领取时间:2023-12-31</div>
+                <div class="open-close" id="openClose">
+                    <img src="https://repo.bfw.wiki/bfwrepo/image/609f09b144431.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+<script type="text/javascript">
+    var openEnvelopes = document.getElementById('openEnvelopes');
+    //开按钮点击事件
+    var noOpenBtn = document.getElementById('noOpenBtn');
+    var openedBtn = document.getElementById('openedBtn');
+    noOpenBtn.onclick = function(){
+        this.className="no-open animated infinite flip delay-5s";
+        var timed = setTimeout(function(){
+            openedBtn.className="opened animated fadeIn";
+            noOpenBtn.className="no-open hidden-class";
+        },2000);
+    }
+
+    //关闭事件
+    var openClose = document.getElementById('openClose');
+    openClose.onclick = function(){
+        openEnvelopes.className="open-envelopes hidden-class";
+    }
+
+</script>
+
+</body>
+</html>
